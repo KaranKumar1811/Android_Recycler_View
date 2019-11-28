@@ -1,5 +1,6 @@
 package com.example.android_recycler_view;
 
+import android.content.Intent;
 import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,10 +32,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Country country=countryList.get(position);
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+        final Country country=countryList.get(position);
         holder.title.setText(country.getTitle());
         holder.imgFlag.setImageResource(country.getFlag());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(holder.itemView.getContext(),country.getTitle(),Toast.LENGTH_LONG).show();
+
+                //new Intent().putExtra().getParcelableExtra()
+            }
+        });
     }
 
 
