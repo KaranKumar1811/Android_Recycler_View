@@ -41,7 +41,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View view) {
                 Toast.makeText(holder.itemView.getContext(),country.getTitle(),Toast.LENGTH_LONG).show();
-
+                Intent in = new Intent(holder.itemView.getContext(),CountryDetailActivity.class);
+                in.putExtra("country",country);
+                holder.itemView.getContext().startActivity(in);
                 //new Intent().putExtra().getParcelableExtra()
             }
         });
